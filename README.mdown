@@ -8,7 +8,7 @@ We only include open source code that we have personally used, and know works.
 
 ## Installing
 
-Clone. Make sure your webroot dir is writeable by your webserver user (ubuntu: www-data) - or production, make a webroot/cjs and webroot/ccss and make those writeable. [Become famliar with the framework](http://book.cakephp.org/view/875/x1-3-Collection). Look at the source as there are lots of comments inline.  Documentation (examples etc) will get better over time.
+Clone. Make sure your webroot dir is writeable by your webserver user (ubuntu: www-data) - or for production server, make a webroot/cjs and webroot/ccss and make those writeable. [Become famliar with the framework](http://book.cakephp.org/view/875/x1-3-Collection). Look at the source as there are lots of comments inline.  Documentation (examples etc) will get better over time.
 
 ## Issues
 
