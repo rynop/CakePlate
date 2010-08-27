@@ -1,0 +1,22 @@
+<IfModule mod_deflate.c>
+  # compress content with type html, text, and css
+  AddOutputFilterByType DEFLATE text/css text/javascript application/javascript application/x-javascript text/js
+  <IfModule mod_headers.c>
+    # properly handle requests coming from behind proxies
+    Header append Vary User-Agent
+  </IfModule>
+</IfModule>
+
+<IfModule mod_expires.c> 
+  ExpiresActive On
+  ExpiresByType text/css "access plus 10 years"
+  ExpiresByType text/js "access plus 10 years"
+  ExpiresByType text/javascript "access plus 10 years"
+  ExpiresByType application/x-javascript "access plus 10 years"
+  ExpiresByType application/javascript "access plus 10 years"
+  ExpiresByType image/png "access plus 10 years"
+  ExpiresByType image/gif "access plus 10 years"
+  ExpiresByType image/jpeg "access plus 10 years"
+</IfModule>
+
+FileETag none

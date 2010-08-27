@@ -1,0 +1,1 @@
+alert("<?php __('Hello W') ?>");

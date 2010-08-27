@@ -1,0 +1,75 @@
+LazyModel plugin
+
+Used to build CakePHP model chains when then they are actually used. This COULD increase the speed of
+your application and decrease it's memory usage significantly. It will be done fully transparent and
+will take only a single line of code in your application.
+
+Facts:
+
+-   100% compatible with CakePHP 1.2 and 1.3 (all model core tests pass).
+-   Works on PHP 5.2 and 5.3.
+-   Only loads models when they are needed.
+-   Works fine with Containable and OneQuery (and probably Linkable).
+
+Setup:
+
+1.  Clone the plugin to your APP/plugins directory (or as a git submodule in that folder).
+2.  Put the following code in APP/app_model.php:
+
+    <?php
+    App::import('Lib', 'LazyModel.LazyModel');
+    class AppModel extends LazyModel {
+    }
+    ?>
+
+3.  See the magic happen.
+
+Q&A:
+
+Q:  I have this page and it isn't really faster, doesn't it work?
+A:  It probably does, but the speed increase can vary a lot. The more models and associations you
+    have and the less you use them, the higher the speed increase will be. If you use every model,
+    they will be instantiated just like CakePHP itself would do. Therefor it is important to use
+    Containable or any other behavior that limits the number of models that is used. Using
+    'recursive' isn't advised.
+
+Q:  What were you thinking when you made a Model as a Lib?
+A:  This is by design. When importing a Model using App::import() CakePHP will automagically load
+    AppModel for you. This is fine when loading a normal model, but if you want to apply this model
+    to AppModel it will be causing an endless loop. This Model essentially is designed to be
+    applied on every model and therefor implemented as a Lib.
+    (See: http://github.com/cakephp/cakephp/blob/1.3/cake/libs/configure.php#L1154)
+
+    The libs folder was introduced in CakePHP 1.3, but it was already possible to use Libs in
+    CakePHP 1.2. It all boils down to some Inflector magic which was implemented earlier.
+
+Q:  My HABTM isn't completely lazy loaded, is this a bug?
+A:  No, full lazy loading only works when you specify your own model using the 'with' key in the
+    association. This is because when using an auto model as join model CakePHP will need the two
+    other models to guess the name of the join model and they still would be instantiated. So if
+    you	want to speed that up, use a 'with' model or don't use HABTM at all.
+
+Q:  ACL breaks on CakePHP 1.2, is this a bug?
+A:  Yes, but not one of this plugin. It has to do with the PHP4 compatibility of CakePHP. The
+    problem is fixed in CakePHP 1.3 though. So if you can, upgrade fast! If you can't, just copy
+    the ACL behavior to your application, find the line of the problem (see the error) which says:
+
+    $model->{$type} =& ClassRegistry::init($type);
+
+    Change it to:
+
+    if (PHP5) {
+        $model->{$type} = ClassRegistry::init($type);
+    } else {
+        $model->{$type} =& ClassRegistry::init($type);
+    }
+
+    This will get rid of the error.
+
+Q:  Was this your own idea?
+A:  Not really, there are more tries at this, but I couldn't really make them work like I had in
+    mind and so started my own little project using a slightly different approach. However, I
+    used the other attempts by Matt Curry and José Lorenzo Rodríguez as inspiration.
+    (See: http://github.com/mcurry/lazy_loader/)
+    (See: http://github.com/lorenzo/lazy_loader/)
+    (See: http://bin.cakephp.org/saved/39855/)
