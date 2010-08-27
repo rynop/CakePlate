@@ -38,3 +38,4 @@
 	//Note: if you enable this, view the app/plugins/paypal_ipn/README as there are some setup setps (like creating DB tables)
 	//Router::connect('/paypal_ipn/process', array('plugin' => 'paypal_ipn', 'controller' => 'instant_payment_notifications', 'action' => 'process'));
 	/* End Paypal IPN plugin */
+?>

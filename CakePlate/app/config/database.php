@@ -99,3 +99,4 @@ class DATABASE_CONFIG {
 		'password' => '<your twitter pw>',
 	);	
 }
+?>
