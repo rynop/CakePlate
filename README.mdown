@@ -19,6 +19,7 @@ If you feel you contributed to this (maybe though html5boilerplate.com) and we m
 ## Stay in the loop
 
 * [CakePlate blog](http://cakeplate.posterous.com/)
+* [Twitter](https://twitter.com/dacakeplate)
 
 ## License
 
@@ -30,13 +31,34 @@ Please read the [wiki](http://wiki.github.com/rynop/CakePlate/) for more informa
 * Zack Garbow
 
 ## Credits/Thanks/Whats included
+In no particular order (other then 1st 2 ;)
 
 * [CakePHP 1.3.3](http://cakephp.org)
-* [HTML5 Boilerplate](http://html5boilerplate.com) - 0.9.1 - Multiple licences, please visit site.
-* [
+* Paul Irish, Divya Manian (and tons of their \*superhero\* friends). [HTML5 Boilerplate](http://html5boilerplate.com) - 0.9.1 - Multiple licences, please visit site.
+* Apache22.conf - Apache 2.2 VHost config. [Avoid HTACCESS](http://bakery.cakephp.org/articles/view/boost-performance-by-removing-htaccess-plus-multi-site-with-virtualdocumentroot)
+* [README.mdown syntax guide](http://daringfireball.net/projects/markdown/syntax)
+* [recaptcha](http://recaptcha.net/plugins/php) - 1.11 - [Terms](http://www.google.com/recaptcha/terms)
+* Ryan Grove. [jsmin](http://github.com/rgrove/jsmin-php/) - 1.1.1 - Modified MIT <-careful here. We are not evil, but you may be.
+* Florian Schmitz. [csstidy](http://csstidy.sourceforge.net/) - 1.3 - GNU v2+
+* Nick Baker. [Paypal IPN Plugin](http://github.com/webtechnick/CakePHP-Paypal-IPN-Plugin) - ?
+* Matt Curry. [Asset plugin](http://github.com/mcurry/asset) - 4/21/2010 - MIT
+* Frank de Graaf. [LazyModel](http://github.com/phally/lazy_model/) - 8/19/2010 - ?
+* Cake Software Foundation. [Twitter Datasource](http://book.cakephp.org/view/1077/An-Example) - MIT
+* Rynop. [site.xml generator](http://rynop.com) - check controllers/sitemaps_controller to get started.
+* Rynop. [Tweet model](http://bakery.cakephp.org/articles/view/twitter-model-plus-plus-for-the-twitter-datasource) - in queue for publish approval 
+* Rynop. Layouts: default,flash,error - MIT
+* Rynop. Elements: flash_success,flash_info,flash_error,footer,header - MIT
+* Rynop. Custom error pages - see app/app_error.php - MIT
+* Cake Software Foundation. [Containable](http://book.cakephp.org/view/1323/Containable) - MIT
+
+### Not included but worth reading
+
+* Rynop. [memcahe backed sessions](http://bakery.cakephp.org/articles/view/using-memcached-to-run-your-sessions)
+* Matt Curry. [8 Ways to Speed Up the Performance of CakePHP Apps](http://www.pseudocoder.com/archives/2009/03/17/8-ways-to-speed-up-cakephp-apps/). Bit outdated but most still apply.
+
 
 ### Changelog
 
-#### 0.1
+#### 0.1 - 8/26/2010
 
 Initial version

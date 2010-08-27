@@ -1,6 +1,8 @@
 <?php
 /**
  * Autogenerate sitemap.xml
+ * 
+ * Check out config/routes.php too!
  *  
  * @author		  rynop
  * @link          http://rynop.com
