@@ -1,2 +1,13 @@
 CakePlate/app/tmp
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+.buildpath
+.project
 
