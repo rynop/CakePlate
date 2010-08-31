@@ -53,7 +53,7 @@ Legend: Credit. [title and link] - version - license
 * Rynop. Custom error pages - see app/app_error.php - MIT
 * Cake Software Foundation. [Containable](http://book.cakephp.org/view/1323/Containable) - MIT
 * Nick Baker. [Facebook plugin](http://github.com/webtechnick/CakePHP-Facebook-Plugin) - 2.0.3 - MIT
-* Zack Garbow. Bit.ly component.
+* Zack Garbow. Bit.ly component - 1.0 - MIT
 * Rynop. tinyurl.com component - 1.0 - MIT
 * Brendon Crawford. [Country/language selector helper](http://aphexcreations.net) - ? - MIT
 * Zack Garbow. File upload/image resize component - 1.0 - MIT
