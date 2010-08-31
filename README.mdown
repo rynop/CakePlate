@@ -59,17 +59,17 @@ Legend: Credit. [title and link] - version - license
 * Zack Garbow. File upload/image resize component - 1.0 - MIT
 * [jQuery Tools](http://flowplayer.org/tools/index.html) - 1.2.4 - [License](http://flowplayer.org/tools/release-notes/index.html)
 
-### Not included but worth reading
+## Not included but worth reading
 
 * Rynop. [memcahe backed sessions](http://bakery.cakephp.org/articles/view/using-memcached-to-run-your-sessions)
 * Matt Curry. [8 Ways to Speed Up the Performance of CakePHP Apps](http://www.pseudocoder.com/archives/2009/03/17/8-ways-to-speed-up-cakephp-apps/). Bit outdated but most still apply.
 * enable [APC](http://pecl.php.net/package/APC) for optcode cache. use apc.php included in the download to view/manage optcode cache.
 
-### Coming soon
+## Coming soon
 
 * Setup your eclipse workspace for CakePHP (there are some handy plugins I use that save me time, and integrated Cake console).
 
-### Changelog
+## Changelog
 
 #### 0.1.1 - 8/30/2010
 * Facebook Connect plugin
