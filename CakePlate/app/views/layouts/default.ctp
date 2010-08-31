@@ -70,7 +70,7 @@
   <script>!window.jQuery && document.write('<script src="/js/jquery-1.4.2.min.js"><\/script>')</script>  
   
   <!-- Optional: <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>-->  
-  <!-- If you add jquery above, include this<script>!jQuery.ui && document.write('<script src="/js/jquery-ui-1.8.4.custom.min"><\/script>');</script> -->
+  <!-- If you add jquery ui above, include this<script>!jQuery.ui && document.write('<script src="/js/jquery-ui-1.8.4.custom.min"><\/script>');</script> -->
   <!-- Optional: <script src="http://cdn.jquerytools.org/1.2.4/all/jquery.tools.min.js"></script>-->
   
   <?php 
