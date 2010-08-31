@@ -61,8 +61,8 @@ Legend: Credit. [title and link] - version - license
 
 ## Not included but worth reading
 
-* Rynop. [memcahe backed sessions](http://bakery.cakephp.org/articles/view/using-memcached-to-run-your-sessions)
-* Matt Curry. [8 Ways to Speed Up the Performance of CakePHP Apps](http://www.pseudocoder.com/archives/2009/03/17/8-ways-to-speed-up-cakephp-apps/). Bit outdated but most still apply.
+* Rynop: [memcahe backed sessions](http://bakery.cakephp.org/articles/view/using-memcached-to-run-your-sessions)
+* Matt Curry: [8 Ways to Speed Up the Performance of CakePHP Apps](http://www.pseudocoder.com/archives/2009/03/17/8-ways-to-speed-up-cakephp-apps/). Bit outdated but most still apply.
 * enable [APC](http://pecl.php.net/package/APC) for optcode cache. use apc.php included in the download to view/manage optcode cache.
 
 ## Coming soon
