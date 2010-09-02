@@ -28,7 +28,7 @@ Please read the [wiki](http://wiki.github.com/rynop/CakePlate/) for more informa
 ## Authors
 
 * Ryan Pendergast (rynop.com)
-* Zack Garbow
+* Zack Garbow (http://twitter.com/garbowza)
 
 ## Credits/Thanks/Whats included
 In no particular order (other then 1st 2 ;)
@@ -56,13 +56,13 @@ Legend: Credit. [title and link] - version - license
 * Zack Garbow. Bit.ly component - 1.0 - MIT
 * Rynop. tinyurl.com component - 1.0 - MIT
 * Brendon Crawford. [Country/language selector helper](http://aphexcreations.net) - ? - MIT
-* Zack Garbow. File upload/image resize component - 1.0 - MIT
+* Nick Baker. [File Upload Plugin](http://github.com/webtechnick/CakePHP-FileUpload-Plugin) - 6.1.1 - ?
 * [jQuery Tools](http://flowplayer.org/tools/index.html) - 1.2.4 - [License](http://flowplayer.org/tools/release-notes/index.html)
 
 ## Not included but worth reading
 
 * Rynop: [memcahe backed sessions](http://bakery.cakephp.org/articles/view/using-memcached-to-run-your-sessions)
-* Matt Curry: [8 Ways to Speed Up the Performance of CakePHP Apps](http://www.pseudocoder.com/archives/2009/03/17/8-ways-to-speed-up-cakephp-apps/). Bit outdated but most still apply.
+* Matt Curry: [8 Ways to Speed Up the Performance of CakePHP Apps](http://www.pseudocoder.com/archives/2009/03/17/8-ways-to-speed-up-cakephp-apps/). A bit outdated but most still apply.
 * enable [APC](http://pecl.php.net/package/APC) for optcode cache. use apc.php included in the download to view/manage optcode cache.
 
 ## Coming soon
@@ -70,6 +70,10 @@ Legend: Credit. [title and link] - version - license
 * Setup your eclipse workspace for CakePHP (there are some handy plugins I use that save me time, and integrated Cake console).
 
 ## Changelog
+
+#### 0.1.2 - 9/02/2010
+* Swapped in a better file upload plugin
+* Removed file upload/image resize component
 
 #### 0.1.1 - 8/30/2010
 * Facebook Connect plugin
