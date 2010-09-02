@@ -7,3 +7,4 @@
 2010-08-25 22:00:00 Notice: Notice (8): Undefined variable: asset in [/hdd2/cakeWorkspace/CakePlate/CakePlate/app/views/layouts/default.ctp, line 28]
 2010-08-25 22:33:26 Notice: Notice (1024): Please change the value of 'Security.salt' in app/config/core.php to a salt value specific to your application in [/hdd2/cakeWorkspace/CakePlate/CakePlate/cake/libs/debugger.php, line 684]
 2010-08-25 22:33:26 Notice: Notice (1024): Please change the value of 'Security.cipherSeed' in app/config/core.php to a numeric (digits only) seed value specific to your application in [/hdd2/cakeWorkspace/CakePlate/CakePlate/cake/libs/debugger.php, line 688]
+2010-09-02 00:05:39 Notice: Notice (8): Undefined property: ApplicationsController::$Upload in [/Library/WebServer/Documents/CakePlate/CakePlate/app/controllers/applications_controller.php, line 13]

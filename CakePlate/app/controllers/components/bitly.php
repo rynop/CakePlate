@@ -1,6 +1,20 @@
 <?php
 
 /**
+ * Component for using your bit.ly API login to generate shortened links
+ *
+ * 
+ * Exmaples:
+ * 
+ * $short_url = $this->Bitly->getBitlyUrl("http://bakery.cakephp.org/articles/view/twitter-model-plus-plus-for-the-twitter-datasource");
+ *  
+ * @author		  Zack Garbow
+ * @link          TBD
+ * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ *
+ */
+
+/**
  * Component to use your bit.ly API login to generate shortened links.
  * 
  * 1) Configure with your bitly login and bitly api key
@@ -9,6 +23,11 @@
 
 class BitlyComponent extends Object {
 
+	/**
+	 * Convert a URL to a tinyurl
+	 * @param string $url
+	 * @return string URL
+	 */
 	function getBitlyUrl($url) {
 		
 		$bitlylogin = '<your_api_login>';
