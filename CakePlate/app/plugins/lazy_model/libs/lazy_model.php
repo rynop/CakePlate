@@ -37,6 +37,14 @@ abstract class LazyModel extends Model {
 	private $map = array();
 
 	/**
+	 * Holds a map of 'with' join models and their parent's HABTM association aliases.
+	 *
+	 * @var array
+	 * @access private
+	 */
+	private $joinModels = array();
+
+	/**
 	 * Overrides the Model constructor to make an inventory of models it can use lazy loading on.
 	 *
 	 * @param mixed $id Set this ID for this model on startup, can also be an array of options, see Model::__construct().
@@ -51,8 +59,9 @@ abstract class LazyModel extends Model {
 				if ($type != 'hasAndBelongsToMany') {
 					$this->map($key, $properties);
 				} elseif (isset($properties['with'])) {
-					$this->map($key, $properties);
-					$this->map(0, (is_array($properties['with'])) ? key($properties['with']) : $properties['with']);
+					list($primaryAlias, $void) = $this->map($key, $properties);
+					list($joinAlias, $void) = $this->map(0, (is_array($properties['with'])) ? key($properties['with']) : $properties['with']);
+					$this->joinModels[$joinAlias] = $primaryAlias;
 				}
 			}
 		}
@@ -112,6 +121,9 @@ abstract class LazyModel extends Model {
 			$className = $assoc;
 		}
 		$this->{$assoc} = ClassRegistry::init(array('class' => $className, 'alias' => $assoc));
+		if (isset($this->joinModels[$assoc]) && count($this->{$assoc}->schema()) <= 2 && $this->{$assoc}->primaryKey !== false) {
+			$this->{$assoc}->primaryKey = $this->hasAndBelongsToMany[$this->joinModels[$assoc]]['foreignKey'];
+		}
 		if (strpos($className, '.') !== false) {
 			ClassRegistry::addObject($className, $this->{$assoc});
 		}
