@@ -227,7 +227,7 @@ class CakeSession extends Object {
  * @return boolean True if session has been started.
  */
 	function started() {
-		if (!empty($_SESSION) && session_id()) {
+		if (isset($_SESSION) && session_id()) {
 			return true;
 		}
 		return false;
@@ -454,7 +454,10 @@ class CakeSession extends Object {
  * @access public
  */
 	function destroy() {
-		$_SESSION = array();
+		if ($this->started()) {
+			session_destroy();
+		}
+		$_SESSION = null;
 		$this->__construct($this->path);
 		$this->start();
 		$this->renew();
@@ -743,7 +746,7 @@ class CakeSession extends Object {
  * Helper function called on write for database sessions.
  *
  * @param integer $id ID that uniquely identifies session in database
- * @param mixed $data The value of the the data to be saved.
+ * @param mixed $data The value of the data to be saved.
  * @return boolean True for successful write, false otherwise.
  * @access private
  */

@@ -387,7 +387,7 @@ class Model extends Overloadable {
  *
  * ### Dynamically creating models
  *
- * You can dynamically create model instances using the the $id array syntax.
+ * You can dynamically create model instances using the $id array syntax.
  *
  * {{{
  * $Post = new Model(array('table' => 'posts', 'name' => 'Post', 'ds' => 'connection2'));
@@ -769,7 +769,8 @@ class Model extends Overloadable {
 			if (is_array($sources) && !in_array(strtolower($this->tablePrefix . $tableName), array_map('strtolower', $sources))) {
 				return $this->cakeError('missingTable', array(array(
 					'className' => $this->alias,
-					'table' => $this->tablePrefix . $tableName
+					'table' => $this->tablePrefix . $tableName,
+					'code' => 500
 				)));
 			}
 			$this->_schema = null;
@@ -1593,6 +1594,7 @@ class Model extends Overloadable {
 
 		if (Set::numeric(array_keys($data))) {
 			while ($validates) {
+				$return = array();
 				foreach ($data as $key => $record) {
 					if (!$currentValidates = $this->__save($record, $options)) {
 						$validationErrors[$key] = $this->validationErrors;
@@ -1624,7 +1626,6 @@ class Model extends Overloadable {
 					break;
 					case ($options['validate'] === 'first'):
 						$options['validate'] = true;
-						$return = array();
 					break;
 					default:
 						if ($options['atomic']) {
@@ -1997,7 +1998,7 @@ class Model extends Overloadable {
 	}
 
 /**
- * Returns a result set array.
+ * Queries the datasource and returns a result set array.
  *
  * Also used to perform new-notation finds, where the first argument is type of find operation to perform
  * (all / first / count / neighbors / list / threaded ),
@@ -2006,14 +2007,32 @@ class Model extends Overloadable {
  *
  * Eg:
  * {{{
- *	find('all', array(
- *		'conditions' => array('name' => 'Thomas Anderson'),
+ * 	find('all', array(
+ * 		'conditions' => array('name' => 'Thomas Anderson'),
  * 		'fields' => array('name', 'email'),
  * 		'order' => 'field3 DESC',
  * 		'recursive' => 2,
  * 		'group' => 'type'
  * ));
  * }}}
+ *
+ * In addition to the standard query keys above, you can provide Datasource, and behavior specific
+ * keys.  For example, when using a SQL based datasource you can use the joins key to specify additional
+ * joins that should be part of the query.
+ *
+ * {{{
+ * find('all', array(
+ * 		'conditions' => array('name' => 'Thomas Anderson'),
+ * 		'joins' => array(
+ * 			'alias' => 'Thought',
+ * 			'table' => 'thoughts',
+ * 			'type' => 'LEFT',
+ * 			'conditions' => '`Thought`.`person_id` = `Person`.`id`'
+ * 		)
+ * ));
+ * }}}
+ *
+ * Behaviors and find types can also define custom finder keys which are passed into find().
  *
  * Specifying 'fields' for new-notation 'list':
  *
@@ -2023,9 +2042,9 @@ class Model extends Overloadable {
  *  - Otherwise, first and second fields are used for key and value.
  *
  * @param array $conditions SQL conditions array, or type of find operation (all / first / count /
- *              neighbors / list / threaded)
+ *    neighbors / list / threaded)
  * @param mixed $fields Either a single string of a field name, or an array of field names, or
- *               options for matching
+ *    options for matching
  * @param string $order SQL ORDER BY conditions (e.g. "price DESC" or "name ASC")
  * @param integer $recursive The number of levels deep to fetch associated records
  * @return array Array of records
@@ -2493,7 +2512,7 @@ class Model extends Overloadable {
 		$_validate = $this->validate;
 		$whitelist = $this->whitelist;
 
-		if (array_key_exists('fieldList', $options)) {
+		if (!empty($options['fieldList'])) {
 			$whitelist = $options['fieldList'];
 		}
 
@@ -2808,7 +2827,7 @@ class Model extends Overloadable {
 		}
 
 		if (empty($db) || !is_object($db)) {
-			return $this->cakeError('missingConnection', array(array('className' => $this->alias)));
+			return $this->cakeError('missingConnection', array(array('code' => 500, 'className' => $this->alias)));
 		}
 	}
 

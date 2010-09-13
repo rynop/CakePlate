@@ -96,6 +96,7 @@ class Configure extends Object {
 					break;
 					case 3:
 						$_this->{$names[0]}[$names[1]][$names[2]] = $value;
+						break;
 					case 4:
 						$names = explode('.', $name, 2);
 						if (!isset($_this->{$names[0]})) {
@@ -844,7 +845,8 @@ class App extends Object {
 	}
 
 /**
- * Finds classes based on $name or specific file(s) to search.
+ * Finds classes based on $name or specific file(s) to search.  Calling App::import() will
+ * not construct any classes contained in the files. It will only find and require() the file.
  *
  * @link          http://book.cakephp.org/view/934/Using-App-import
  * @param mixed $type The type of Class if passed as a string, or all params can be passed as

@@ -35,7 +35,7 @@ In no particular order (other then 1st 2 ;)
 
 Legend: Credit. [title and link] - version - license
 
-* [CakePHP 1.3.3](http://cakephp.org)
+* [CakePHP 1.3.4](http://cakephp.org)
 * Paul Irish, Divya Manian (and tons of their \*superhero\* friends). [HTML5 Boilerplate](http://html5boilerplate.com) - 0.9.1 - Multiple licences, please visit site.
 * Apache22.conf - Apache 2.2 VHost config. [Avoid HTACCESS](http://bakery.cakephp.org/articles/view/boost-performance-by-removing-htaccess-plus-multi-site-with-virtualdocumentroot)
 * [README.mdown syntax guide](http://daringfireball.net/projects/markdown/syntax)

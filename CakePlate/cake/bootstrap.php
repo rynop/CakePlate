@@ -37,5 +37,3 @@ require LIBS . 'set.php';
 require LIBS . 'cache.php';
 Configure::getInstance();
 require CAKE . 'dispatcher.php';
-
-date_default_timezone_set("America/Chicago");

@@ -586,9 +586,21 @@ class HtmlHelperTest extends CakeTestCase {
 		);
 		$this->assertTags($result, $expected);
 
+		$result = $this->Html->script('test.json');
+		$expected = array(
+			'script' => array('type' => 'text/javascript', 'src' => 'js/test.json.js')
+		);
+		$this->assertTags($result, $expected);
+
 		$result = $this->Html->script('/plugin/js/jquery-1.3.2.js?someparam=foo');
 		$expected = array(
 			'script' => array('type' => 'text/javascript', 'src' => '/plugin/js/jquery-1.3.2.js?someparam=foo')
+		);
+		$this->assertTags($result, $expected);
+
+		$result = $this->Html->script('test.json.js?foo=bar');
+		$expected = array(
+			'script' => array('type' => 'text/javascript', 'src' => 'js/test.json.js?foo=bar')
 		);
 		$this->assertTags($result, $expected);
 
@@ -612,6 +624,34 @@ class HtmlHelperTest extends CakeTestCase {
 		$view->expectAt(0, 'addScript', array(new PatternExpectation('/script_in_head.js/')));
 		$result = $this->Html->script('script_in_head', array('inline' => false));
 		$this->assertNull($result);
+	}
+
+/**
+ * test a script file in the webroot/theme dir.
+ *
+ * @return void
+ */
+	function testScriptInTheme() {
+		if ($this->skipIf(!is_writable(WWW_ROOT . 'theme'), 'Cannot write to webroot/theme')) {
+			return;
+		}
+		App::import('Core', 'File');
+
+		$testfile = WWW_ROOT . 'theme' . DS . 'test_theme' . DS . 'js' . DS . '__test_js.js';
+		$file =& new File($testfile, true);
+
+		App::build(array(
+			'views' => array(TEST_CAKE_CORE_INCLUDE_PATH . 'tests' . DS . 'test_app' . DS . 'views'. DS)
+		));
+
+		$this->Html->webroot = '/';
+		$this->Html->theme = 'test_theme';
+		$result = $this->Html->script('__test_js.js');
+		$expected = array(
+			'script' => array('src' => '/theme/test_theme/js/__test_js.js', 'type' => 'text/javascript')
+		);
+		$this->assertTags($result, $expected);
+		App::build();
 	}
 
 /**

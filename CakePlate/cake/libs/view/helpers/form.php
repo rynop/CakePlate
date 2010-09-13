@@ -172,7 +172,7 @@ class FormHelper extends AppHelper {
  * ### Options:
  *
  * - `type` Form method defaults to POST
- * - `action`  The Action the form submits to. Can be a string or array,
+ * - `action`  The controller action the form submits to, (optional).
  * - `url`  The url the form submits to. Can be a string or a url array,
  * - `default`  Allows for the creation of Ajax forms.
  * - `onsubmit` Used in conjunction with 'default' to create ajax forms.
@@ -1461,7 +1461,8 @@ class FormHelper extends AppHelper {
 			$hiddenAttributes = array(
 				'value' => '',
 				'id' => $attributes['id'] . ($style ? '' : '_'),
-				'secure' => false
+				'secure' => false,
+				'name' => $attributes['name']
 			);
 			$select[] = $this->hidden(null, $hiddenAttributes);
 		} else {
@@ -1495,7 +1496,7 @@ class FormHelper extends AppHelper {
 			$selected,
 			array(),
 			$showParents,
-			array('escape' => $escapeOptions, 'style' => $style)
+			array('escape' => $escapeOptions, 'style' => $style, 'name' => $attributes['name'])
 		));
 
 		$template = ($style == 'checkbox') ? 'checkboxmultipleend' : 'selectend';
@@ -1777,6 +1778,8 @@ class FormHelper extends AppHelper {
  * - `separator` The contents of the string between select elements. Defaults to '-'
  * - `empty` - If true, the empty select option is shown.  If a string,
  *   that string is displayed as the empty element.
+ * - `value` | `default` The default value to be used by the input.  A value in `$this->data` 
+ *   matching the field name will override this value.  If no default is provided `time()` will be used.
  *
  * @param string $fieldName Prefix name for the SELECT element
  * @param string $dateFormat DMY, MDY, YMD.
@@ -1792,7 +1795,12 @@ class FormHelper extends AppHelper {
 		$year = $month = $day = $hour = $min = $meridian = null;
 
 		if (empty($selected)) {
-			$selected = $this->value($fieldName);
+			$selected = $this->value($attributes, $fieldName);
+			if (isset($selected['value'])) {
+				$selected = $selected['value'];
+			} else {
+				$selected = null;
+			}
 		}
 
 		if ($selected === null && $attributes['empty'] != true) {
@@ -2034,7 +2042,7 @@ class FormHelper extends AppHelper {
 							$label['class'] = 'selected';
 						}
 
-						list($name) = array_values($this->_name());
+						$name = $attributes['name'];
 
 						if (empty($attributes['class'])) {
 							$attributes['class'] = 'checkbox';
@@ -2165,7 +2173,7 @@ class FormHelper extends AppHelper {
  *
  * Options
  *
- *  - `secure` - boolean whether or not the the field should be added to the security fields.
+ *  - `secure` - boolean whether or not the field should be added to the security fields.
  *
  * @param string $field Name of the field to initialize options for.
  * @param array $options Array of options to append options into.
