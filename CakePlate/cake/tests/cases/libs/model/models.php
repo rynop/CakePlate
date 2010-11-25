@@ -283,6 +283,24 @@ class Article extends CakeTestModel {
 }
 
 /**
+ * Model stub for beforeDelete testing
+ *
+ * @see #250
+ * @package cake.tests
+ */
+class BeforeDeleteComment extends CakeTestModel {
+	var $name = 'BeforeDeleteComment';
+
+	var $useTable = 'comments';
+
+	function beforeDelete($cascade = true) {
+		$db =& $this->getDataSource();
+		$db->delete($this, array($this->alias . '.' . $this->primaryKey => array(1, 3)));
+		return true;
+	}
+}
+
+/**
  * NumericArticle class
  *
  * @package       cake
@@ -3539,6 +3557,7 @@ class FruitNoWith extends CakeTestModel {
 		)
 	);
 }
+
 class UuidTagNoWith extends CakeTestModel {
 	var $name = 'UuidTag';
 	var $useTable = 'uuid_tags';
@@ -3555,11 +3574,21 @@ class UuidTagNoWith extends CakeTestModel {
 class ProductUpdateAll extends CakeTestModel {
 	var $name = 'ProductUpdateAll';
 	var $useTable = 'product_update_all';
-
 }
 
 class GroupUpdateAll extends CakeTestModel {
 	var $name = 'GroupUpdateAll';
 	var $useTable = 'group_update_all';
+}
 
+class TransactionTestModel extends CakeTestModel {
+	var $name = 'TransactionTestModel';
+	var $useTable = 'samples';
+
+	function afterSave($created) {
+		$data = array(
+			array('apple_id' => 1, 'name' => 'sample6'),
+		);
+		$this->saveAll($data, array('atomic' => true, 'callbacks' => false));
+	}
 }

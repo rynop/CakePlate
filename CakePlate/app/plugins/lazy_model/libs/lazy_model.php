@@ -32,9 +32,9 @@ abstract class LazyModel extends Model {
 	 * the model association properties, because the plugin names are stripped away there when using plugin models.
 	 *
 	 * @var array
-	 * @access private
+	 * @access protected
 	 */
-	private $map = array();
+	protected $map = array();
 
 	/**
 	 * Holds a map of 'with' join models and their parent's HABTM association aliases.
@@ -58,7 +58,7 @@ abstract class LazyModel extends Model {
 			foreach ((array)$this->{$type} as $key => $properties) {
 				if ($type != 'hasAndBelongsToMany') {
 					$this->map($key, $properties);
-				} elseif (isset($properties['with'])) {
+				} elseif (is_array($properties) && isset($properties['with'])) {
 					list($primaryAlias, $void) = $this->map($key, $properties);
 					list($joinAlias, $void) = $this->map(0, (is_array($properties['with'])) ? key($properties['with']) : $properties['with']);
 					$this->joinModels[$joinAlias] = $primaryAlias;

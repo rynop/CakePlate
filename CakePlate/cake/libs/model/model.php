@@ -559,9 +559,9 @@ class Model extends Overloadable {
  *
  * Example: Turn off the associated Model Support request,
  * to temporarily lighten the User model:
- * 
+ *
  * `$this->User->unbindModel( array('hasMany' => array('Supportrequest')) );`
- * 
+ *
  * unbound models that are not made permanent will reset with the next call to Model::find()
  *
  * @param array $params Set of bindings to unbind (indexed by binding type)
@@ -1589,7 +1589,7 @@ class Model extends Overloadable {
 		}
 
 		if ($options['atomic'] && $options['validate'] !== 'only') {
-			$db->begin($this);
+			$transactionBegun = $db->begin($this);
 		}
 
 		if (Set::numeric(array_keys($data))) {
@@ -1629,8 +1629,12 @@ class Model extends Overloadable {
 					break;
 					default:
 						if ($options['atomic']) {
-							if ($validates && ($db->commit($this) !== false)) {
-								return true;
+							if ($validates) {
+								if ($transactionBegun) {
+									return $db->commit($this) !== false;
+								} else {
+									return true;
+								}
 							}
 							$db->rollback($this);
 							return false;
@@ -1665,6 +1669,7 @@ class Model extends Overloadable {
 					}
 				}
 			}
+
 			if (!$this->__save($data, $options)) {
 				$validationErrors[$this->alias] = $this->validationErrors;
 				$validates = false;
@@ -1735,18 +1740,25 @@ class Model extends Overloadable {
 				case ($options['validate'] === 'first'):
 					$options['validate'] = true;
 					$return = array();
-					continue;
 				break;
 				default:
 					if ($options['atomic']) {
 						if ($validates) {
-							return ($db->commit($this) !== false);
+							if ($transactionBegun) {
+								return $db->commit($this) !== false;
+							} else {
+								return true;
+							}
 						} else {
 							$db->rollback($this);
 						}
 					}
 					return $return;
 				break;
+			}
+			if ($options['atomic'] && !$validates) {
+				$db->rollback($this);
+				return false;
 			}
 		}
 	}
@@ -1799,14 +1811,15 @@ class Model extends Overloadable {
 		}
 		$id = $this->id;
 
-		if ($this->exists() && $this->beforeDelete($cascade)) {
-			$db =& ConnectionManager::getDataSource($this->useDbConfig);
+		if ($this->beforeDelete($cascade)) {
 			$filters = $this->Behaviors->trigger($this, 'beforeDelete', array($cascade), array(
 				'break' => true, 'breakOn' => false
 			));
-			if (!$filters) {
+			if (!$filters || !$this->exists()) {
 				return false;
 			}
+			$db =& ConnectionManager::getDataSource($this->useDbConfig);
+
 			$this->_deleteDependent($id, $cascade);
 			$this->_deleteLinks($id);
 			$this->id = $id;
@@ -1818,7 +1831,7 @@ class Model extends Overloadable {
 				));
 			}
 
-			if ($db->delete($this)) {
+			if ($db->delete($this, array($this->alias . '.' . $this->primaryKey => $id))) {
 				if (!empty($this->belongsTo)) {
 					$this->updateCounterCache($keys[$this->alias]);
 				}
@@ -2024,10 +2037,12 @@ class Model extends Overloadable {
  * find('all', array(
  * 		'conditions' => array('name' => 'Thomas Anderson'),
  * 		'joins' => array(
- * 			'alias' => 'Thought',
- * 			'table' => 'thoughts',
- * 			'type' => 'LEFT',
- * 			'conditions' => '`Thought`.`person_id` = `Person`.`id`'
+ *			array(
+ * 				'alias' => 'Thought',
+ * 				'table' => 'thoughts',
+ * 				'type' => 'LEFT',
+ * 				'conditions' => '`Thought`.`person_id` = `Person`.`id`'
+ *			)
  * 		)
  * ));
  * }}}

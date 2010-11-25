@@ -1,6 +1,6 @@
 /*
  * Asset Packer CakePHP Plugin
- * Copyright (c) 2009 Matt Curry
+ * Copyright (c) 2010 Matt Curry
  * www.PseudoCoder.com
  * http://github.com/mcurry/asset
  *
@@ -14,7 +14,7 @@
     * A sample .htaccess file is included in the zip. Rename it and drop it in output dirs for improved performance.
 
 /* Instructions */
-   1. You'll need a working version of CakePHP installed. This is running on 1.2.2.8120 stable.
+   1. You'll need a working version of CakePHP installed. This is running on 1.3.4 stable.
    2. Download jsmin 1.1.0 or later and put it in vendors/jsmin.
    3. Download CSSTidy 1.3 or later and put the contents in vendors/csstidy.
    4. Download the plugin to /app/plugins/asset.
@@ -30,14 +30,38 @@
    8. Then in your layout file, in the head section, instead of using $scripts_for_layout call the helper:
       echo $asset->scripts_for_layout();
 
+/* Options */
+   Options are set when including the helper.
+   var $helpers = array('Asset.asset' => array('optionName' => 'optionValue'));
+   
+	 * debug, default: false
+     Cake debug = 0  packed js/css returned.  $this->options['md5FileName']options['debug'] doesn't do anything.
+     Cake debug > 0, $this->options['md5FileName']options['debug'] = false    essentially turns the helper off.  js/css not packed.  Good for debugging your js/css files.
+     Cake debug > 0, $this->options['md5FileName']options['debug'] = true     packed js/css returned.  Good for debugging this helper.
+		
+	 * checkTs, default: false
+     there is a *minimal* perfomance hit associated with looking up the filemtimes
+     if you clean out your cached dir (as set below) on builds then you don't need this.
+
+	 * md5FileName, default: false
+     the packed files are named by stringing together all the individual file names
+     this can generate really long names, so by setting this option to true
+     the long name is md5'd, producing a resonable length file name.
+
+	 * searchPaths, default: array()
+     Additional paths for searching for css/js
+     
+	 * cachePaths, default: array('css' => 'ccss', 'js' => 'cjs')
+     Paths for storing the compressed files, relative to your webroot
+		
+	 * cssCompression, default: high_compression
+     default, low_compression, high_compression, highest_compression
+		
+	 * fixCssImg, default: false
+     replace relative img paths in css files with full http://...
+    
 /* Tips */
-    * By default the cached files are written to /app/webroot/cjs and /app/webroot/ccss.  You can change that by setting:
-      Configure::write('Asset.jsPath', 'some/path');
-      Configure::write('Asset.cssPath', 'some/path');
-      Don't include slashes at the beginning or end.  Path will be relative to /app/webroot.  So if set:
-      Configure::write('Asset.jsPath', 'js/packed');
-      The path will be /app/webroot/js/packed
-    * Remember to set the inline option to false for JS and CSS in your layout if you want them to be packed with the view scripts.
-    * Setting DEBUG on will cause this helper to output the scripts the same way $scripts_for_layout would, effectifly turning it off while testing.
-    * If you get a JavaScript error with a packed version of a file it's most likely missing a semi-colon somewhere.
-    * Order is important. If you include script1 then script2 on one view and script2 then script1 on another, they will generate separate packed versions and will be treated by the browser as separate scripts.
+   * Remember to set the inline option to false for JS and CSS in your layout if you want them to be packed with the view scripts.
+   * Setting DEBUG on will cause this helper to output the scripts the same way $scripts_for_layout would, effectifly turning it off while testing.
+   * If you get a JavaScript error with a packed version of a file it's most likely missing a semi-colon somewhere.
+   * Order is important. If you include script1 then script2 on one view and script2 then script1 on another, they will generate separate packed versions and will be treated by the browser as separate scripts.

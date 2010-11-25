@@ -21,7 +21,7 @@ if (Configure::read() == 0):
 endif;
 ?>
 <h2><?php echo sprintf(__('Release Notes for CakePHP %s.', true), Configure::version()); ?></h2>
-<a href="http://cakephp.lighthouseapp.com/projects/42648/changelog-1-3-4"><?php __('Read the changelog'); ?> </a>
+<a href="http://cakephp.org/changelogs/1.3.6"><?php __('Read the changelog'); ?> </a>
 <?php
 if (Configure::read() > 0):
 	Debugger::checkSecurityKeys();
@@ -71,6 +71,16 @@ endif;
 		endif;
 	?>
 </p>
+<?php
+	App::import('Core', 'Validation');
+	if (!Validation::alphaNumeric('cakephp')) {
+		echo '<p><span class="notice">';
+		__('PCRE has not been compiled with Unicode support.');
+		echo '<br/>';
+		__('Recompile PCRE with Unicode support by adding <code>--enable-unicode-properties</code> when configuring');
+		echo '</span></p>';
+	}
+?>
 <?php
 if (isset($filePresent)):
 	if (!class_exists('ConnectionManager')) {

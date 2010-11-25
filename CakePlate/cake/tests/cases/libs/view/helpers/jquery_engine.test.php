@@ -5,14 +5,14 @@
  * PHP versions 4 and 5
  *
  * CakePHP : Rapid Development Framework <http://www.cakephp.org/>
- * Copyright 2006-2009, Cake Software Foundation, Inc.
+ * Copyright 2006-2010, Cake Software Foundation, Inc.
  *								1785 E. Sahara Avenue, Suite 490-204
  *								Las Vegas, Nevada 89104
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright       Copyright 2006-2009, Cake Software Foundation, Inc.
+ * @copyright       Copyright 2006-2010, Cake Software Foundation, Inc.
  * @link            http://cakephp.org CakePHP Project
  * @package         cake.tests
  * @subpackage      cake.tests.cases.views.helpers
@@ -184,7 +184,7 @@ class JqueryEngineHelperTestCase extends CakeTestCase {
 			'method' => 'post',
 			'wrapCallbacks' => false
 		));
-		$expected = '$.ajax({dataType:"html", success:function (data, textStatus) {$("#updated").html(data);}, type:"post", url:"\\/people\\/edit\\/1"});';
+		$expected = '$.ajax({dataType:"html", success:function (data, textStatus) {doFoo$("#updated").html(data);}, type:"post", url:"\\/people\\/edit\\/1"});';
 		$this->assertEqual($result, $expected);
 
 		$result = $this->Jquery->request('/people/edit/1', array(
@@ -195,7 +195,7 @@ class JqueryEngineHelperTestCase extends CakeTestCase {
 			'data' => '$("#someId").serialize()',
 			'wrapCallbacks' => false
 		));
-		$expected = '$.ajax({data:$("#someId").serialize(), dataType:"html", success:function (data, textStatus) {$("#updated").html(data);}, type:"post", url:"\\/people\\/edit\\/1"});';
+		$expected = '$.ajax({data:$("#someId").serialize(), dataType:"html", success:function (data, textStatus) {doFoo$("#updated").html(data);}, type:"post", url:"\\/people\\/edit\\/1"});';
 		$this->assertEqual($result, $expected);
 
 		$result = $this->Jquery->request('/people/edit/1', array(
@@ -225,7 +225,7 @@ class JqueryEngineHelperTestCase extends CakeTestCase {
 			'data' => '$j("#someId").serialize()',
 			'wrapCallbacks' => false
 		));
-		$expected = '$j.ajax({data:$j("#someId").serialize(), dataType:"html", success:function (data, textStatus) {$j("#updated").html(data);}, type:"post", url:"\\/people\\/edit\\/1"});';
+		$expected = '$j.ajax({data:$j("#someId").serialize(), dataType:"html", success:function (data, textStatus) {doFoo$j("#updated").html(data);}, type:"post", url:"\\/people\\/edit\\/1"});';
 		$this->assertEqual($result, $expected);
 	}
 

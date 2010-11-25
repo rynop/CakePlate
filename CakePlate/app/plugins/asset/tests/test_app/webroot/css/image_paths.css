@@ -1,0 +1,17 @@
+
+body
+{
+	background: url(images/background.jpg);
+}
+
+div
+{
+	background: url(../images/bg1.jpg);
+}
+
+p
+{
+	background-image: url(./imgs/bg2.png);
+}
+
+#drink div.feck { background: url(/css/images/arse.gif); }

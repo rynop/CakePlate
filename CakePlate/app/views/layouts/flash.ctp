@@ -1,3 +1,7 @@
+<?php
+//Make sure these are always added first to asset (before stuff in your views)
+$this->Html->script(array('plugins','commonscript'),array('inline'=>false));
+?>
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -20,17 +24,16 @@
   <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-<!--  optional: <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/ui-lightness/jquery-ui.css">-->
                 
   <?php   	  	
-	$html->css(array('style','cake.generic','custom'),NULL,array('inline'=>false));	
+	$this->Html->css(array('style','cake.generic','custom'),NULL,array('inline'=>false));		
 	echo $asset->scripts_for_layout('css');
 	
 	//Don't include handheld in asset because it needs media="handheld"
-	echo $html->css(array('handheld'),null,array('media'=>'handheld'));	
-	//Don't include modernizr in asset cuz it needs to be in the head
-	echo $html->script('modernizr-1.5.min');
+	echo $this->Html->css(array('handheld'),null,array('media'=>'handheld'));	
+	
+	//Example of how to use google webfonts - see webroot/css/custom.css
+	echo $this->Html->css('http://fonts.googleapis.com/css?family=Lobster',NULL,array('inline'=>true));
   ?>
 
 <?php if (Configure::read() == 0) { ?>
@@ -65,14 +68,16 @@
   <!-- Javascript at the bottom for fast page loading -->
 
   <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-  <script>!window.jQuery && document.write('<script src="/js/jquery-1.4.2.min.js"><\/script>')</script>  
-  <!-- Optional: <script>!jQuery.ui && document.write('<script src="/js/jquery-ui-1.8.4.custom.min"><\/script>');</script> -->
-
-  <?php 
-  	$html->script(array('plugins','script'),array('inline'=>false));
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+ <!-- If you want to fallback, download jquery to your js dir -->
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/js/jquery-1.4.3.min.js"%3E%3C/script%3E'))</script>
+  
+  <!-- Optional: <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script>-->  
+  <!-- Optional: <script src="http://cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js"></script>-->
+  
+<?php
   	echo $asset->scripts_for_layout('js');
-  ?>
+ ?>
 
   <!--[if lt IE 7 ]>
 	<?php echo $html->script('dd_belatedpng')?>

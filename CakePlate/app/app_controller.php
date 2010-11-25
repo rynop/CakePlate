@@ -8,7 +8,7 @@
  */
 class AppController extends Controller {
 
-	var $helpers = array('Asset.asset','Js');	
+	var $helpers = array('Html', 'Form', 'Session', 'Asset.asset');
 	    
 	/**
 	 * Want to use 

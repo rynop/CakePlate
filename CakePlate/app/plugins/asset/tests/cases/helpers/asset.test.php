@@ -22,7 +22,7 @@ class AssetTestCase extends CakeTestCase {
     $controller = null;
     $this->View = new View($controller);
     
-    $this->Asset = new AssetHelper(array('wwwRoot' => $this->wwwRoot, 'js' => $this->wwwRoot . 'js' . DS, 'css' => $this->wwwRoot . 'css' . DS));
+    $this->Asset = new AssetHelper(array(), array('wwwRoot' => $this->wwwRoot, 'js' => $this->wwwRoot . 'js' . DS, 'css' => $this->wwwRoot . 'css' . DS));
     $this->Asset->Javascript = new JavascriptHelper();
     $this->Asset->Html = new HtmlHelper();
     
@@ -82,11 +82,11 @@ class AssetTestCase extends CakeTestCase {
   }
   
   function testGenerateFileNameMd5() {
-    $this->Asset->md5FileName = true;
+    $this->Asset->options['md5FileName'] = true;
     $files = array('script1', 'script2', 'script3');
     $name = $this->Asset->__generateFileName($files);
     $this->assertEqual('4991a54c1356544e1188bf6c8b9e7ae9', $name);
-    $this->Asset->md5FileName = false;
+    $this->Asset->options['md5FileName'] = false;
   }
   
   function testFindFileDupeName() {
@@ -119,7 +119,7 @@ END;
   }
   
   function testGetFileContentsExtraPath() {
-    Configure::write('Asset.searchPaths', array($this->wwwRoot . 'js' . DS));
+    $this->Asset->options['searchPaths'] = array($this->wwwRoot . 'js' . DS);
     $asset = array('plugin' => '', 'script' => 'open_source_with_js_and_css/style');
     $contents = $this->Asset->__getFileContents($asset, 'css');
     $expected = <<<END
@@ -128,7 +128,7 @@ END;
 }
 END;
     $this->assertEqual($expected, $contents);
-    Configure::delete('Asset.searchPaths');
+    $this->Asset->options['searchPaths'] = array();
   }
   
   function testProcessJsNew() {
@@ -185,9 +185,10 @@ END;
                 array('plugin' => '', 'script' => 'script2'),
                 array('plugin' => 'asset', 'script' => 'script3'));
     
-    $this->Asset->checkTs = true;
+    $this->Asset->options['checkTs'] = true;
     $fileName = $this->Asset->__process('js', $js);
     $this->assertNotEqual($origFileName, $fileName);
+    $this->Asset->options['checkTs'] = false;
   }
   
   function testProcessCssNew() {
@@ -199,13 +200,13 @@ END;
     
     $fileName = $this->Asset->__process('css', $css);
     $expected = <<<END
-/* style1.css (70%) */
+/* style1.css (78%) */
 *{margin:0;padding:0;}
 
-/* style2.css (85%) */
+/* style2.css (89%) */
 body{background:#003d4c;color:#fff;font-family:'lucida grande',verdana,helvetica,arial,sans-serif;font-size:90%;margin:0;}
 
-/* style3.css (69%) */
+/* style3.css (72%) */
 h1,h2,h3,h4{font-weight:400;}
 END;
     $contents = file_get_contents($this->cssCache . $fileName  . '.css');
@@ -397,5 +398,43 @@ END;
 		$this->assertEqual($scripts, $expected);
 		
 		Configure::write('debug', 0);
+	}
+
+	function testCssImagePathNormalization() {
+		$result = $this->Asset->__normalizeImageUrl('css/blueprint/background.jpg');
+		$this->assertEqual($result, '/css/blueprint/background.jpg');
+
+		$result = $this->Asset->__normalizeImageUrl('css/../images/background.png');
+		$this->assertEqual($result, '/images/background.png');
+
+		$result = $this->Asset->__normalizeImageUrl('css/drink/../../images/background.png');
+		$this->assertEqual($result, '/images/background.png');
+
+		$result = $this->Asset->__normalizeImageUrl('css/./images/background.png');
+		$this->assertEqual($result, '/css/images/background.png');
+	}
+
+	function testPreprocessCss() {
+		$input = array(
+			'script' => 'image_paths.css'
+		);
+
+		$result = $this->Asset->__preprocessCss($input, file_get_contents($this->Asset->paths['css'].DS.'image_paths.css'));
+
+		$this->assertPattern('#\(\/css\/images\/background\.jpg\)#', $result);
+		$this->assertPattern('#\(\/images\/bg1\.jpg\)#', $result);
+		$this->assertPattern('#\(\/css\/imgs\/bg2\.png\)#', $result);
+		$this->assertPattern('#\(\/css\/images\/arse\.gif\)#', $result);
+
+		$input = array(
+			'script' => 'some_subfolder/image_paths.css'
+		);
+
+		$result = $this->Asset->__preprocessCss($input, file_get_contents($this->Asset->paths['css'].DS.'image_paths.css'));
+
+		$this->assertPattern('#\(\/css\/some_subfolder\/images\/background\.jpg\)#', $result);
+		$this->assertPattern('#\(\/css\/images\/bg1\.jpg\)#', $result);
+		$this->assertPattern('#\(\/css\/some_subfolder\/imgs\/bg2\.png\)#', $result);
+		$this->assertPattern('#\(\/css\/images\/arse\.gif\)#', $result);
 	}
 }

@@ -1,6 +1,9 @@
 <?php
 App::import('Lib', 'LazyModel.LazyModel');
 abstract class LazyAppModel extends LazyModel {
+	public function getLazyMap() {
+		return $this->map;
+	}
 }
 
 class Article extends LazyAppModel {
@@ -91,7 +94,27 @@ class LazyModelTestCase extends CakeTestCase {
 
 		$this->assertFalse(property_exists($article, 'User'));
 	}
-	
+
+	public function testMapEntries() {
+		$article = ClassRegistry::init('Article');
+
+		$result = $article->getLazyMap();
+		$expected = array(
+			'User' => 'User'
+		);
+		$this->assertIdentical($result, $expected);
+
+		$result = $article->User->getLazyMap();
+		$expected = array(
+			'Article' => 'Article'
+		);
+		$this->assertIdentical($result, $expected);
+
+		$result = $article->Tag->getLazyMap();
+		$expected = array();
+		$this->assertIdentical($result, $expected);
+	}
+
 	public function endTest() {
 		ClassRegistry::flush();
 	}

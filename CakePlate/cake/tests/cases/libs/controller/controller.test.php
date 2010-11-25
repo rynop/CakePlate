@@ -696,6 +696,44 @@ class ControllerTest extends CakeTestCase {
 	}
 
 /**
+ * testPaginateFieldsDouble method
+ *
+ * @return void
+ * @access public
+ */
+	function testPaginateFieldsDouble(){
+		$Controller =& new Controller();
+		$Controller->uses = array('ControllerPost');
+		$Controller->params['url'] = array();
+		$Controller->constructClasses();
+
+		$Controller->paginate = array(
+			'fields' => array(
+				'ControllerPost.id',
+				'radians(180.0) as floatvalue'
+			),
+			'order' => array('ControllerPost.created'=>'DESC'),
+			'limit' => 1,
+			'page' => 1,
+			'recursive' => -1
+		);
+		$conditions = array();
+		$result = $Controller->paginate('ControllerPost',$conditions);
+		$expected = array(
+			array(
+				'ControllerPost' => array(
+					'id' => 3,
+				),
+				0 => array(
+					'floatvalue' => '3.14159265358979',
+				),
+			),
+		);
+		$this->assertEqual($result, $expected);
+	}
+
+
+/**
  * testPaginatePassedArgs method
  *
  * @return void
@@ -865,6 +903,13 @@ class ControllerTest extends CakeTestCase {
 		$expected = array('ModelName' => 'name', 'ModelName2' => 'name2');
 		$Controller->set(array('ModelName', 'ModelName2'), array('name', 'name2'));
 		$this->assertIdentical($Controller->viewVars, $expected);
+
+		$Controller->viewVars = array();
+		$Controller->set(array(3 => 'three', 4 => 'four'));
+		$Controller->set(array(1 => 'one', 2 => 'two'));
+		$expected = array(3 => 'three', 4 => 'four', 1 => 'one', 2 => 'two');
+		$this->assertEqual($Controller->viewVars, $expected);
+		
 	}
 
 /**
