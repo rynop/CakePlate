@@ -37,7 +37,7 @@ Legend: Credit. [title and link] - version - license
 
 * [CakePHP 1.3.6](http://cakephp.org)
 * Paul Irish, Divya Manian (and tons of their \*superhero\* friends). [HTML5 Boilerplate](http://html5boilerplate.com) - 0.9.1 - Multiple licences, please visit site.
-* Apache22.conf - Apache 2.2 VHost config. [Avoid HTACCESS](http://bakery.cakephp.org/articles/view/boost-performance-by-removing-htaccess-plus-multi-site-with-virtualdocumentroot)
+* Apache22.conf - Apache 2.2 VHost config. [Avoid HTACCESS](http://bakery.cakephp.org/articles/rynop/2010/09/10/boost_performance_by_removing_htaccess_plus_multi-site_with_virtualdocumentroot)
 * [README.mdown syntax guide](http://daringfireball.net/projects/markdown/syntax)
 * [recaptcha](http://recaptcha.net/plugins/php) - 1.11 - [Terms](http://www.google.com/recaptcha/terms)
 * Ryan Grove. [jsmin](http://github.com/rgrove/jsmin-php/) - 1.1.1 - Modified MIT <-careful here. We are not evil, but you may be.
@@ -61,7 +61,7 @@ Legend: Credit. [title and link] - version - license
 
 ## Not included but worth reading
 
-* Rynop: [memcahe backed sessions](http://bakery.cakephp.org/articles/view/using-memcached-to-run-your-sessions)
+* Rynop: [memcahe backed sessions](http://bakery.cakephp.org/articles/rynop/2010/09/10/using-memcached-to-run-your-sessions)
 * Matt Curry: [8 Ways to Speed Up the Performance of CakePHP Apps](http://www.pseudocoder.com/archives/2009/03/17/8-ways-to-speed-up-cakephp-apps/). A bit outdated but most still apply.
 * enable [APC](http://pecl.php.net/package/APC) for optcode cache. use apc.php included in the download to view/manage optcode cache.
 
