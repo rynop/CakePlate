@@ -99,7 +99,6 @@ $this->Html->script(array('plugins','commonscript'),array('inline'=>false));
     s.parentNode.insertBefore(g, s);
    })(document, 'script');
   </script>
-  
-<?php echo $this->element('sql_dump'); ?>  
+    
 </body>
 </html>

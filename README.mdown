@@ -58,6 +58,7 @@ Legend: Credit. [title and link] - version - license
 * Brendon Crawford. [Country/language selector helper](http://aphexcreations.net) - ? - MIT
 * Nick Baker. [File Upload Plugin](http://github.com/webtechnick/CakePHP-FileUpload-Plugin) - 6.1.1 - ?
 * [jQuery Tools](http://flowplayer.org/tools/index.html) - 1.2.4 - [License](http://flowplayer.org/tools/release-notes/index.html)
+* Mark Story. [debug_kit](https://github.com/cakephp/debug_kit) - 1.3 (12/3/2010) - ?
 
 ## Not included but worth reading
 
@@ -70,6 +71,9 @@ Legend: Credit. [title and link] - version - license
 * Setup your eclipse workspace for CakePHP (there are some handy plugins I use that save me time, and integrated Cake console).
 
 ## Changelog
+
+#### 0.1.4 - 12/10/2010
+* Added debug_kit plugin
 
 #### 0.1.3 - 11/25/2010
 * updated asset,lazy_model, and CakePHP versions

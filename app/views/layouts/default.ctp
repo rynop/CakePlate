@@ -97,8 +97,6 @@ $this->Html->script(array('plugins','commonscript'),array('inline'=>false));
     g.src = '//www.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g, s);
    })(document, 'script');
-  </script>
-  
-<?php echo $this->element('sql_dump'); ?>  
+  </script>  
 </body>
 </html>
