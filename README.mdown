@@ -70,7 +70,9 @@ Legend: Credit. [title and link] - version - license
 
 ## Not included but worth reading
 
+* Rynop: [setup eclipse 3.6 for Cake development](http://bakery.cakephp.org/articles/rynop/2010/11/11/howto_setup_eclipse_3_6_to_get_the_most_out_of_cakephp_1_3_development)
 * Rynop: [memcahe backed sessions](http://bakery.cakephp.org/articles/rynop/2010/09/10/using-memcached-to-run-your-sessions)
+* Rynop: [don't use .htaccess](http://bakery.cakephp.org/articles/rynop/2010/09/10/boost_performance_by_removing_htaccess_plus_multi-site_with_virtualdocumentroot)
 * Matt Curry: [8 Ways to Speed Up the Performance of CakePHP Apps](http://www.pseudocoder.com/archives/2009/03/17/8-ways-to-speed-up-cakephp-apps/). A bit outdated but most still apply.
 * enable [APC](http://pecl.php.net/package/APC) for optcode cache. use apc.php included in the download to view/manage optcode cache.
 
