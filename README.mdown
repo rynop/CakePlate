@@ -16,6 +16,14 @@ Please report any issues OR suggestions to the [issue tracker](http://github.com
 
 If you feel you contributed to this (maybe though html5boilerplate.com) and we missed you on our credits/thanks list, send us a message and we will be more then happy to include your name (and a link to your site).
 
+## Ideas?
+
+Got something you think should be added? use the github issue tracker.
+
+## We are looking for help
+
+We are currently looking for someone who can make a few sample files that we can include in CakePlate.  It can be some thing as simple as an example model, view, controller (or whater else) that leverages as much of the things we have included as possible. Extra credit would be a full blown demo app that uses CakePlate complete with .sql load file.
+
 ## Stay in the loop
 
 * [CakePlate blog](http://cakeplate.posterous.com/)
