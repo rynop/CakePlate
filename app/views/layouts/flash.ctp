@@ -50,16 +50,16 @@ $this->Html->script(array('plugins','commonscript'),array('inline'=>false));
 <!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
 
   <div id="container">
-    <header>
+    <header id="header">
 	<?php echo $this->element('header');?>
     </header>
     
-    <div id="main">
+    <div id="content">
 			<h3><?php echo $message?></h3>
 			<p><a href="<?php echo $url?>"><?php __('Click here if not automatically forwarded in'); echo $pause; __('seconds')?>.</a></p>
     </div>
     
-    <footer>
+    <footer id="footer">
 	<?php echo $this->element('footer');?>
     </footer>
   </div> <!--! end of #container -->
