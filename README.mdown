@@ -82,7 +82,10 @@ Legend: Credit. [title and link] - version - license
 
 ## Changelog
 
-#### 0.1.4 - 12/10/2010
+#### 0.1.5 - 12/3/2010
+* added id's that cake needs for cake.generic.css to html in layouts
+
+#### 0.1.4 - 12/2/2010
 * Added debug_kit plugin
 
 #### 0.1.3 - 11/25/2010
