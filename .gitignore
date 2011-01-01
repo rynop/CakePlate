@@ -11,4 +11,5 @@ app/tmp/
 
 .buildpath
 .project
+.settings
 

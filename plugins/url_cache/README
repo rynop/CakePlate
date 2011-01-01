@@ -1,0 +1,36 @@
+/*
+ * App Helper Url Caching
+ * Copyright (c) 2009 Matt Curry
+ * www.PseudoCoder.com
+ * http://github.com/mcurry/url_cache
+ * http://www.pseudocoder.com/archives/how-to-save-half-a-second-on-every-cakephp-requestand-maintain-reverse-routing
+ *
+ * @author      Matt Curry <matt@pseudocoder.com>
+ * @license     MIT
+ *
+ */
+
+/* Description */
+Whenever you use $html->link() in your CakePHP views the Cake Router has to scan through all your routes until it finds a match.
+This can be slow if you have a lot of links on a page or use a lot of custom routes.  By adding this code to your AppHelper the urls
+are cached, speeding up requests.  The cache settings follow the same rules as the other Cake core cache settings.
+If debug is set to greater than 0 the cache expires in 10 seconds.  With debug at 0 the cache is good for 999 days.
+
+/* Instructions */
+1) Download the plugin to /app/plugins/url_cache
+
+2) Put this either in your app_helper
+   App::import('Vendor', 'UrlCache.url_cache_app_helper');
+   
+3) Have your AppHelper extend UrlCacheAppHelper instead of Helper
+   class AppHelper extends UrlCacheAppHelper {
+   ...
+   }
+
+4) Thats it!  Just continue using $html->link as you usually do.
+   By default all the cache will be stored in one file.
+   You can set the option Configure::write('UrlCache.pageFiles', true) and each page will keep a seperate cache.
+   I added this option in the event your site has a ton of unique urls don't want to store them all in one giant cache,
+   which would need to be loaded each request.
+
+5) When ever you do new builds/update your routes, you can delete /app/tmp/cache/persistent/cake_core_url_map

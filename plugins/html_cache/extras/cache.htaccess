@@ -1,0 +1,8 @@
+<IfModule mod_deflate.c>
+  # compress content with type html,
+  AddOutputFilterByType DEFLATE text/html application/rss+xml
+  <IfModule mod_headers.c>
+    # properly handle requests coming from behind proxies
+    Header append Vary User-Agent
+  </IfModule>
+</IfModule>

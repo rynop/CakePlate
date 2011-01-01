@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_METHOD} ^GET$
+    RewriteCond %{DOCUMENT_ROOT}/cache/%{HTTP_HOST}/$1/index.html -f
+    RewriteRule ^(.*)$ /cache/%{HTTP_HOST}/$1/index.html [L]
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
