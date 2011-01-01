@@ -10,7 +10,8 @@ class AppController extends Controller {
 
 	var $helpers = array('Html', 'Form', 'Session', 'Asset.asset');
 	var $components = array(
-    	'DebugKit.Toolbar' => array('panels' => array('history' => false))
+		'Session',
+	   	'DebugKit.Toolbar' => array('panels' => array('history' => false))
 	);	
 	    
 	/**

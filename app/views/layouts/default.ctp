@@ -1,5 +1,5 @@
 <?php
-//Make sure these are always added first to asset (before stuff in your views)
+//Make sure these are always added first into asset before your stuff in views
 $this->Html->script(array('plugins','commonscript'),array('inline'=>false));
 ?>
 <!doctype html>
@@ -24,10 +24,24 @@ $this->Html->script(array('plugins','commonscript'),array('inline'=>false));
   <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-                
+         
+<!-- Moving jquery to the top, cuz some jquery plugins don't play with with it at the bottom of the page -->
+  <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+  <!-- NOTE: dont use https unless you have to!  -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/js/jquery-1.4.4.min.js"%3E%3C/script%3E'))</script>
+  
+<!-- OPTIONAL:    
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/js/jquery-ui-1.8.7.custom.min.js"%3E%3C/script%3E'))</script>
+  
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/themes/cupertino/jquery-ui.css">
+-->
+          
   <?php   	  	
-	$this->Html->css(array('style','cake.generic','custom'),NULL,array('inline'=>false));		
-	echo $asset->scripts_for_layout('css');
+	$this->Html->css(array('style','cake.generic','custom'),NULL,array('inline'=>false));	
+//	debug($this);	
+	echo $asset->scripts_for_layout('css');	
 	
 	//Don't include handheld in asset because it needs media="handheld"
 	echo $this->Html->css(array('handheld'),null,array('media'=>'handheld'));	
@@ -36,6 +50,19 @@ $this->Html->script(array('plugins','commonscript'),array('inline'=>false));
 	echo $this->Html->css('http://fonts.googleapis.com/css?family=Lobster',NULL,array('inline'=>true));
   ?>
   
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-XXXXXXX-X']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>    
 </head>
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -62,18 +89,11 @@ $this->Html->script(array('plugins','commonscript'),array('inline'=>false));
 
 
   <!-- Javascript at the bottom for fast page loading -->
-
-  <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
- <!-- If you want to fallback, download jquery to your js dir -->
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/js/jquery-1.4.3.min.js"%3E%3C/script%3E'))</script>
-  
-  <!-- Optional: <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script>-->  
-  <!-- Optional: <script src="http://cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js"></script>-->
-  
-<?php
-  	echo $asset->scripts_for_layout('js');
- ?>
+ 
+  <?php 
+	echo $asset->scripts_for_layout('js');
+	echo $asset->scripts_for_layout('codeblock');
+  ?>
 
   <!--[if lt IE 7 ]>
 	<?php echo $html->script('dd_belatedpng')?>
@@ -84,19 +104,5 @@ $this->Html->script(array('plugins','commonscript'),array('inline'=>false));
   <?php echo $html->script('profiling/yahoo-profiling.min')?>
   <?php echo $html->script('profiling/config')?>  
   <!-- end profiling code -->
-
-
-  <!-- asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet 
-       change the UA-XXXXX-X to be your site's ID -->
-  <script>
-   var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-   (function(d, t) {
-    var g = d.createElement(t),
-        s = d.getElementsByTagName(t)[0];
-    g.async = true;
-    g.src = '//www.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g, s);
-   })(document, 'script');
-  </script>  
 </body>
 </html>
