@@ -63,6 +63,7 @@ class AssetHelper extends Helper {
   var $View = null;
 
   function __construct($options, $paths=array()) {
+  	if(!is_array($options)) $options = array($options);
 		$this->options = array_merge($this->options, $options);
     $this->paths = array_merge($this->paths, $paths);
 
