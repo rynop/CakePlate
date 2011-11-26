@@ -33,8 +33,6 @@ $this->AssetCompress->autoInclude = false;
 		echo $this->AssetCompress->css('common');
 		echo $this->AssetCompress->includeCss();
 	?>
-	  
-	<link rel="stylesheet" href="/custom/css/site.css">	
 	
 	<!-- put ur google analytics here  -->
   </head>
