@@ -35,9 +35,8 @@ Legend: Credit. [title and link]
 * [Debug Kit](https://github.com/cakephp/debug_kit)
 * Malsup. [jQuery Form plugin](https://github.com/malsup/form/blob/master/jquery.form.js)
 * Rynop. nginx.conf - sample nginx/php5-fpm config 
-* Rynop. Layouts: default,flash,error - MIT
-* Rynop. Elements: flash_success,flash_info,flash_error,footer,header - MIT
-* Rynop. Custom error pages - see app/app_error.php - MIT
+* Rynop. Layouts: default - MIT
+* Rynop. Elements: flash_success,flash_info,flash_error,footer,nav - MIT
 * Rynop. CakePHP .gitignore rules
 * Rynop. clear_apc.php. Clear optcode cache for production sites
 * Rynop. php.ini overrides
