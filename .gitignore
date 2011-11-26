@@ -39,9 +39,9 @@ debug.log
 !/webapp/app/tmp/tests/empty
 
 /webapp/app/webroot/cache_css/*
-!/webapp/app/tmp/cache_css/
-!/webapp/app/tmp/cache_css/empty
+!/webapp/app/webroot/cache_css/
+!/webapp/app/webroot/cache_css/empty
 
 /webapp/app/webroot/cache_js/*
-!/webapp/app/tmp/cache_js/
-!/webapp/app/tmp/cache_js/empty
+!/webapp/app/webroot/cache_js/
+!/webapp/app/webroot/cache_js/empty
