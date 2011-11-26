@@ -21,7 +21,7 @@ Please report any issues OR suggestions to the [issue tracker](http://github.com
 
 ## Authors
 
-* Ryan Pendergast [rynop.com](http://rynop.com)
+* Ryan Pendergast [rynop.com](http://rynop.com) || [@rynop](http://twitter.com/rynop)
 * Zack Garbow [@garbowza](http://twitter.com/garbowza)
 
 ## Credits/Thanks/Whats included
@@ -39,6 +39,8 @@ Legend: Credit. [title and link]
 * Rynop. Elements: flash_success,flash_info,flash_error,footer,header - MIT
 * Rynop. Custom error pages - see app/app_error.php - MIT
 * Rynop. CakePHP .gitignore rules
+* Rynop. clear_apc.php. Clear optcode cache for production sites
+* Rynop. php.ini overrides
 
 ## Not included but worth reading
 
