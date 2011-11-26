@@ -10,4 +10,6 @@
  *	http://www.gnu.org/licenses/gpl.html
  * ========================================================== */
 
-//Put any js code here that is common across your views
+/*
+ * Put any js code here that is common across your views
+ */
