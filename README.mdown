@@ -8,110 +8,50 @@ We only include open source code that we have personally used, and know works.
 
 ## Installing
 
-Clone. Make sure your webroot dir is writeable by your webserver user (ubuntu: www-data) - or for production server, make a webroot/cjs and webroot/ccss and make those writeable. [Become famliar with the framework](http://book.cakephp.org/view/875/x1-3-Collection). Look at the source as there are lots of comments inline.  Documentation (examples etc) will get better over time.
+See [the wiki](https://github.com/rynop/CakePlate/wiki)
 
 ## Issues
 
 Please report any issues OR suggestions to the [issue tracker](http://github.com/rynop/CakePlate/issues) on github.
-
-If you feel you contributed to this (maybe though html5boilerplate.com) and we missed you on our credits/thanks list, send us a message and we will be more then happy to include your name (and a link to your site).
-
-## Ideas?
-
-Got something you think should be added? use the github issue tracker.
-
-## We are looking for help
-
-We are currently looking for someone who can make a few sample files that we can include in CakePlate.  It can be some thing as simple as an example model, view, controller (or whater else) that leverages as much of the things we have included as possible. Extra credit would be a full blown demo app that uses CakePlate complete with .sql load file.
 
 ## Stay in the loop
 
 * [CakePlate blog](http://cakeplate.posterous.com/)
 * [Twitter](https://twitter.com/dacakeplate)
 
-## License
-
-Please read the [wiki](http://wiki.github.com/rynop/CakePlate/) for more information. There 
-
 ## Authors
 
-* Ryan Pendergast (rynop.com)
-* Zack Garbow (http://twitter.com/garbowza)
+* Ryan Pendergast [rynop.com](http://rynop.com)
+* Zack Garbow [@garbowza](http://twitter.com/garbowza)
 
 ## Credits/Thanks/Whats included
-In no particular order (other then 1st 2 ;)
+In no particular order (other then 1st ;)
 
-Legend: Credit. [title and link] - version - license
+Legend: Credit. [title and link]
 
-* [CakePHP 1.3.6](http://cakephp.org)
-* Paul Irish, Divya Manian (and tons of their \*superhero\* friends). [HTML5 Boilerplate](http://html5boilerplate.com) - 0.9.1 - Multiple licences, please visit site.
-* Rynop. apache22.conf - Apache 2.2 VHost config. [Avoid HTACCESS](http://bakery.cakephp.org/articles/rynop/2010/09/10/boost_performance_by_removing_htaccess_plus_multi-site_with_virtualdocumentroot)
+* [CakePHP 2.0.3](http://cakephp.org)
+* [Twitter bootstrap](http://twitter.github.com/bootstrap/)
+* [Asset Compress](https://github.com/markstory/asset_compress)
+* [Debug Kit](https://github.com/cakephp/debug_kit)
+* Malsup. [jQuery Form plugin](https://github.com/malsup/form/blob/master/jquery.form.js)
 * Rynop. nginx.conf - sample nginx/php5-fpm config 
-* [recaptcha](http://recaptcha.net/plugins/php) - 1.11 - [Terms](http://www.google.com/recaptcha/terms)
-* Ryan Grove. [jsmin](http://github.com/rgrove/jsmin-php/) - 1.1.1 - Modified MIT <-careful here. We are not evil, but you may be.
-* Florian Schmitz. [csstidy](http://csstidy.sourceforge.net/) - 1.3 - GNU v2+
-* Nick Baker. [Paypal IPN Plugin](http://github.com/webtechnick/CakePHP-Paypal-IPN-Plugin) - ?
-* Matt Curry with patch from rynop. [Asset plugin](http://github.com/mcurry/asset) - 10/22/2010 - MIT
-* Frank de Graaf. [LazyModel](http://github.com/phally/lazy_model/) - 10/22/2010 - ?
-* Cake Software Foundation. [Twitter Datasource](http://book.cakephp.org/view/1077/An-Example) - MIT
-* Rynop. [site.xml generator](http://rynop.com) - check controllers/sitemaps_controller to get started.
-* Rynop. [Tweet model](http://bakery.cakephp.org/articles/view/twitter-model-plus-plus-for-the-twitter-datasource) - in queue for publish approval 
 * Rynop. Layouts: default,flash,error - MIT
 * Rynop. Elements: flash_success,flash_info,flash_error,footer,header - MIT
 * Rynop. Custom error pages - see app/app_error.php - MIT
-* Cake Software Foundation. [Containable](http://book.cakephp.org/view/1323/Containable) - MIT
-* Nick Baker. [Facebook plugin](http://github.com/webtechnick/CakePHP-Facebook-Plugin) - 2.0.3 - MIT
-* Zack Garbow. Bit.ly component - 1.0 - MIT
-* Rynop. tinyurl.com component - 1.0 - MIT
-* Brendon Crawford. [Country/language selector helper](http://aphexcreations.net) - ? - MIT
-* Nick Baker. [File Upload Plugin](http://github.com/webtechnick/CakePHP-FileUpload-Plugin) - 6.1.1 - ?
-* [jQuery Tools](http://flowplayer.org/tools/index.html) - 1.2.4 - [License](http://flowplayer.org/tools/release-notes/index.html)
-* Mark Story. [debug_kit](https://github.com/cakephp/debug_kit) - 1.3 (12/3/2010) - ?
-* Matt Curry with patch from rynop. [html_cache](https://github.com/mcurry/html_cache) - 10/22/2010 - MIT 
-* Matt Curry with patch from rynop. [url_cache](https://github.com/mcurry/url_cache) - 2/26/2010 - MIT
+* Rynop. CakePHP .gitignore rules
 
 ## Not included but worth reading
 
-* Rynop: [setup eclipse 3.6 for Cake development](http://bakery.cakephp.org/articles/rynop/2010/11/11/howto_setup_eclipse_3_6_to_get_the_most_out_of_cakephp_1_3_development)
-* Rynop: [memcahe backed sessions](http://bakery.cakephp.org/articles/rynop/2010/09/10/using-memcached-to-run-your-sessions)
+* Rynop: [setup eclipse 3.7 for Cake development](http://bakery.cakephp.org/articles/rynop/2010/11/11/howto_setup_eclipse_3_6_to_get_the_most_out_of_cakephp_1_3_development)
 * Rynop: [don't use .htaccess](http://bakery.cakephp.org/articles/rynop/2010/09/10/boost_performance_by_removing_htaccess_plus_multi-site_with_virtualdocumentroot)
 * Matt Curry: [8 Ways to Speed Up the Performance of CakePHP Apps](http://www.pseudocoder.com/archives/2009/03/17/8-ways-to-speed-up-cakephp-apps/). A bit outdated but most still apply.
-* enable [APC](http://pecl.php.net/package/APC) for optcode cache. use apc.php included in the download to view/manage optcode cache.
+
+## Still needed
+
+* example production apache config (no .htaccess)
+* include testing stuff + example
 
 ## Changelog
 
-#### 0.1.6 - 1/1/2010
-* added sample nginx/php5-fpm config
-* fixed some problems with asset plugin
-* updated google-analytics asyc code
-* update jquery/jqueryui
-* Moved jquery stuff to head cuz some jquery plugins don't play nice with js at bottom of page
-* actually included debug_kit (oops)
-* added html_cache plugin
-* added url_cache plugin
-
-#### 0.1.5 - 12/3/2010
-* added id's that cake needs for cake.generic.css to html in layouts
-
-#### 0.1.4 - 12/2/2010
-* Added debug_kit plugin
-
-#### 0.1.3 - 11/25/2010
-* updated asset,lazy_model, and CakePHP versions
-* updated jquery, jqueryui, jquerytools CDN
-* many updates to default layouts
-
-#### 0.1.2 - 9/02/2010
-* Swapped in a better file upload plugin
-* Removed file upload/image resize component
-
-#### 0.1.1 - 8/30/2010
-* Facebook Connect plugin
-* Bit.ly URL and tinyurl.com shortener components
-* Country/language selector helper
-* File upload/image resize component
-* jQuery Tools javascript library
-
-#### 0.1 - 8/26/2010
-
-Initial version
+#### 11/26/2011
+* 2.0 version implementiation
