@@ -40,6 +40,8 @@ Legend: Credit. [title and link]
 * Rynop. CakePHP .gitignore rules
 * Rynop. clear_apc.php. Clear optcode cache for production sites
 * Rynop. php.ini overrides
+* Rynop. TipHelper
+* [AWS SDK for PHP](https://github.com/amazonwebservices/aws-sdk-for-php)
 
 ## Not included but worth reading
 
