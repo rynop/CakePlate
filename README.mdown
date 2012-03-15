@@ -34,6 +34,7 @@ Legend: Credit. [title and link]
 * [Asset Compress](https://github.com/markstory/asset_compress)
 * [Debug Kit](https://github.com/cakephp/debug_kit)
 * Malsup. [jQuery Form plugin](https://github.com/malsup/form/blob/master/jquery.form.js)
+* Rynop. [ViewMemcache](https://github.com/rynop/cakephp-ViewMemcache) - MIT 
 * Rynop. nginx.conf - sample nginx/php5-fpm config 
 * Rynop. Layouts: default - MIT
 * Rynop. Elements: flash_success,flash_info,flash_error,footer,nav - MIT
@@ -59,6 +60,7 @@ Legend: Credit. [title and link]
 #### 03/14/2012
 * CakePHP 2.1.0 stable
 * Don't submodule twitter bootstrap
+* bootstrap 2.0.2 and view updates
 * bootstrap 2.0.2 and view updates
 
 #### 11/26/2011
