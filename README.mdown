@@ -29,7 +29,7 @@ In no particular order (other then 1st ;)
 
 Legend: Credit. [title and link]
 
-* [CakePHP 2.0.3](http://cakephp.org)
+* [CakePHP 2.1.0 stable](http://cakephp.org)
 * [Twitter bootstrap](http://twitter.github.com/bootstrap/)
 * [Asset Compress](https://github.com/markstory/asset_compress)
 * [Debug Kit](https://github.com/cakephp/debug_kit)
