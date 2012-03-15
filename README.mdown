@@ -56,5 +56,10 @@ Legend: Credit. [title and link]
 
 ## Changelog
 
+#### 03/14/2012
+* CakePHP 2.1.0 stable
+* Don't submodule twitter bootstrap
+* bootstrap 2.0.2 and view updates
+
 #### 11/26/2011
 * 2.0 version implementiation

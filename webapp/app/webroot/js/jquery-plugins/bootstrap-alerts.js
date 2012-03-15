@@ -1,1 +1,0 @@
-../../../../../submodules/twitter-bootstrap/js/bootstrap-alerts.js

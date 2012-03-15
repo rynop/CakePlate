@@ -1,9 +1,6 @@
 [submodule "submodules/cake2"]
 	path = submodules/cake2
 	url = git://github.com/cakephp/cakephp.git
-[submodule "submodules/twitter-bootstrap"]
-	path = submodules/twitter-bootstrap
-	url = git://github.com/twitter/bootstrap.git
 [submodule "submodules/jquery-form"]
 	path = submodules/jquery-form
 	url = git://github.com/malsup/form.git
