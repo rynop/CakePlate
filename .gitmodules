@@ -13,3 +13,6 @@
 [submodule "submodules/aws-sdk-for-php"]
 	path = submodules/aws-sdk-for-php
 	url = git://github.com/amazonwebservices/aws-sdk-for-php.git
+[submodule "submodules/cakephp-ViewMemcache"]
+	path = submodules/cakephp-ViewMemcache
+	url = git://github.com/rynop/cakephp-ViewMemcache.git
