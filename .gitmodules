@@ -10,3 +10,6 @@
 [submodule "submodules/asset-compress"]
 	path = submodules/asset-compress
 	url = git://github.com/markstory/asset_compress.git
+[submodule "submodules/aws-sdk-for-php"]
+	path = submodules/aws-sdk-for-php
+	url = git://github.com/amazonwebservices/aws-sdk-for-php.git
