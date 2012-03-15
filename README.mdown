@@ -8,7 +8,7 @@ We only include open source code that we have personally used, and know works.
 
 ## Installing
 
-See [the wiki](https://github.com/rynop/CakePlate/wiki)
+See [the wiki](https://github.com/rynop/CakePlate/wiki).
 
 ## Issues
 
